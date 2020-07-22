@@ -46,6 +46,7 @@ body{
 .app_graphTitle{
   margin-top:20px;
   margin-bottom: 20px;
+  text-transform: capitalize;
 }
 .leaflet-control-attribution{
   display: none !important;
