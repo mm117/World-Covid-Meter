@@ -41,9 +41,13 @@ function LineGraph({casesType='cases', ...props}) {
         },
         ticks: {
           callback: function (value, index, values) {
-            return numeral(value).format("0a");
+               return numeral(value).format("0a");
           },
         },
+        scaleLabel: {
+            display: true,
+            labelString: '1k = 1000'
+        }
       }
     ],
   };
