@@ -11,34 +11,39 @@ import { Context } from "./store/context/AppContext";
 import AppHeader from "./components/AppHeader";
 
 function App() {
-  const { casesType, countryInfo, setCasesType } = React.useContext(Context);
-  return (
+  const { casesType, countryInfo, setCasesType, country} = React.useContext(Context);
+   return (
     <div className="app">
       <div className="app_left">
         <AppHeader />
         <div className="app_stats">
           <InfoBox
-            isRed
+             activeClass="infoBox--selected-red"
             active={casesType === "cases"}
             onClick={(e) => setCasesType("cases")}
             title="Confirmed"
             cases={prettyPrintStat(countryInfo.todayCases)}
             total={prettyPrintStat(countryInfo.cases)}
+            hightTextClass="red"
           />
           <InfoBox
+           activeClass="infoBox--selected-green"
             active={casesType === "recovered"}
             onClick={(e) => setCasesType("recovered")}
             title="Recovered"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={prettyPrintStat(countryInfo.recovered)}
+            hightTextClass="green"
           />
           <InfoBox
-            isRed
+           activeClass="infoBox--selected-black"
             active={casesType === "deaths"}
             onClick={(e) => setCasesType("deaths")}
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={prettyPrintStat(countryInfo.deaths)}
+            hightTextClass="black"
+
           />
         </div>
         <Map />
@@ -47,7 +52,7 @@ function App() {
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table />
-          <h3 className="app_graphTitle">Worldwide New {casesType}</h3>
+          <h3 className="app_graphTitle">{country === 'worldwide' ? 'WorldWide' : `${countryInfo.country}`} New {casesType}</h3>
           <LineGraph className="app_graph" />
         </CardContent>
       </Card>

@@ -9,22 +9,12 @@ import { Context } from "../store/context/AppContext";
 function AppHeader() {
   const {
     countries,
-    setCountries,
     country,
     setCountry,
-    countryInfo,
     setCountryInfo,
-    tableData,
-    setTableData,
-    mapCountries,
-    setMapCountries,
-    mapCenter,
     setMapCenter,
-    mapZoom,
-    setMapZoom,
-    casesType,
-    setCasesType,
-  } = React.useContext(Context);
+    setMapZoom
+   } = React.useContext(Context);
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
     const url =

@@ -1,31 +1,11 @@
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import initialState from "../InitialState";
 import reducers from "../reducers/AppReducer";
 import actions from "../actions/Action";
 import { sortData, prettyPrintStat } from "../../util";
 export const Context = React.createContext();
 
-
 export const AppContext = ({ children }) => {
-  // const [state,dispatch] = React.useReducer(reducers, initialState);
-  // const value = {
-  //     countries: initialState.countries,
-  //     country : initialState.country,
-  //     countryInfo: initialState.countryInfo,
-  //     tableData : initialState.tableData,
-  //     mapCountries : initialState.mapCountries,
-  //     mapCenter:initialState.mapCenter,
-  //     mapZoom: initialState.mapZoom,
-  //     casesType: initialState.casesType,
-  //     setCountries: (value) => {dispatch({type:actions.SET_COUNTRIES, value: value})},
-  //     setCountry: (value) => {dispatch({type:actions.SET_COUNTRY, value: value})},
-  //     setCountryInfo: (value) => {dispatch({type:actions.SET_COUNTRYINFO, value: value})},
-  //     setTableData: (value) => {dispatch({type:actions.SET_TABLEDATA, value: value})},
-  //     setMapCountries: (value) => {dispatch({type:actions.SET_MAPCOUNTRIES, value: value})},
-  //     setMapCenter: (value) => {dispatch({type:actions.SET_MAPCENTER, value: value})},
-  //     setMapZoom: (value) => {dispatch({type:actions.SET_MAPZOOM, value: value})},
-  //     setCasesType: (value) => {dispatch({type:actions.SET_CASESTYPE, value: value})},
-  // }
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});

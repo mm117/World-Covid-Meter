@@ -1,21 +1,7 @@
 import React from "react";
 import numeral from "numeral";
 import { Circle, Popup, Marker } from "react-leaflet";
-const caseTypeColors = {
-  cases: {
-    hex: "#CC1034",
-    multiplier: 800,
-  },
-  recovered: {
-    hex: "#7dd71d",
-    multiplier: 1200,
-  },
-  deaths: {
-    hex: "#fb4443",
-    multiplier: 3000,
-  },
-};
-
+import {caseTypeColors} from './constant/Constant';
 export const sortData = (data) => {
   const sortedData = [...data];
   return sortedData.sort((a, b) => b.cases - a.cases);

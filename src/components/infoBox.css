@@ -6,14 +6,15 @@
 .infoBox:not(:last-child) {
     margin-right:15px;
 }
-.infoBox--selected{
+.infoBox--selected-green{
  border-top: 10px solid greenyellow;
 }
-
-.infoBox--red {
-    border-color: red;
-}
-
+.infoBox--selected-red{
+    border-top: 10px solid red;
+   }
+   .infoBox--selected-black{
+    border-top: 10px solid black;
+   }
 
 .infoBox_cases{
    color:#cc1034;
@@ -30,4 +31,14 @@
 }
 .infoBox_cases--green {
     color: lightgreen !important;
+}
+
+.red {
+    color : red
+}
+.green {
+    color : greenyellow
+}
+.black {
+    color : black
 }

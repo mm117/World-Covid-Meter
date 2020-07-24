@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
 import {Context} from '../store/context/AppContext';
+import {caseTypeColors} from '../constant/Constant';
 
 function LineGraph({...props}) {
-  const {chartData, setChartData,casesType } = React.useContext(Context);
+  const {chartData, setChartData,casesType,country } = React.useContext(Context);
   const options = {
     legend: {
       display: false,
@@ -53,17 +54,18 @@ function LineGraph({...props}) {
     ],
   };
   useEffect(() => {
-    const getGraphData = async () => {
-      await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
+     const url = country === 'worldwide' ? 'https://disease.sh/v3/covid-19/historical/all?lastdays=120' : `https://disease.sh/v3/covid-19/historical/${country}?lastdays=120`;
+     const getGraphData = async () => {
+      await fetch(url)
         .then((response) => response.json())
         .then((data) => {
           console.table(data);
-          const chartData = buildChart(data);
+          const chartData = data.timeline ? buildChart(data.timeline) :  buildChart(data);
           setChartData(chartData);
         });
     };
     getGraphData();
-  }, [casesType]);
+  }, [casesType,country]);
 
   const buildChart = (data) => {
     const chartData = [];
@@ -88,8 +90,8 @@ function LineGraph({...props}) {
           data={{
             datasets: [
               {
-                backgroundColor: casesType === 'recovered' ? "rgba(0,128,0,0.8)" : "rgba(204,16,52,0.8)",
-                borderColor: casesType === 'recovered' ? "green" : "#cc1034",
+                backgroundColor: caseTypeColors[casesType].rgba,
+                borderColor: caseTypeColors[casesType].primary,
                 data: chartData,
               },
             ],
