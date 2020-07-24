@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
+import {Context} from '../store/context/AppContext';
 
-function LineGraph({casesType='cases', ...props}) {
-  const [data, setData] = useState([]);
+function LineGraph({...props}) {
+  const {chartData, setChartData,casesType } = React.useContext(Context);
   const options = {
     legend: {
       display: false,
@@ -58,7 +59,7 @@ function LineGraph({casesType='cases', ...props}) {
         .then((data) => {
           console.table(data);
           const chartData = buildChart(data);
-          setData(chartData);
+          setChartData(chartData);
         });
     };
     getGraphData();
@@ -82,14 +83,14 @@ function LineGraph({casesType='cases', ...props}) {
 
   return (
     <div className={props.className}>
-      {data?.length > 0 && (
+      {chartData?.length > 0 && (
         <Line
           data={{
             datasets: [
               {
                 backgroundColor: casesType === 'recovered' ? "rgba(0,128,0,0.8)" : "rgba(204,16,52,0.8)",
                 borderColor: casesType === 'recovered' ? "green" : "#cc1034",
-                data: data,
+                data: chartData,
               },
             ],
           }}

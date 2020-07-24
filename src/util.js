@@ -1,6 +1,6 @@
 import React from "react";
 import numeral from "numeral";
-import { Circle, Popup } from "react-leaflet";
+import { Circle, Popup, Marker } from "react-leaflet";
 const caseTypeColors = {
   cases: {
     hex: "#CC1034",
@@ -37,7 +37,7 @@ export const showDataOnMap = (data, caseType = "cases") =>
         Math.sqrt(country[caseType]) * caseTypeColors[caseType].multiplier
       }
     >
-      <Popup>
+     <Popup>
         <div className="info-container">
           <div
             className="info-flag"
