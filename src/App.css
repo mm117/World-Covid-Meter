@@ -75,6 +75,21 @@ body {
   opacity: 0.7;
   text-align: center;
 }
+.app_footer{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.app_footer > h5{
+  color:gray;
+  opacity: 0.9;
+  margin-left: 8px;
+}
+.app_copyright{
+  font-size:14px;
+  color:darkblue !important;
+  text-decoration: none !important;
+ }
 
 @media (max-width:990px) {
   .app {

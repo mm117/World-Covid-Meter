@@ -13,6 +13,7 @@ import AppHeader from "./components/AppHeader";
 function App() {
   const { casesType, countryInfo, setCasesType, country} = React.useContext(Context);
    return (
+     <>
     <div className="app">
       <div className="app_left">
         <AppHeader />
@@ -72,7 +73,13 @@ function App() {
           <LineGraph className="app_graph" />
         </CardContent>
       </Card>
-    </div>
+     </div>
+      <div className="app_footer">
+      <h5>
+         © 2020 Copyright: <a className="app_copyright" href="mailto:Mukeshmishra117@gmail.com">Mukesh Mishra</a> 
+      </h5>
+      </div>
+    </>
   );
 }
 
