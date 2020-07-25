@@ -27,7 +27,7 @@ function App() {
             casesPerOneMillion={countryInfo.casesPerOneMillion ? countryInfo.casesPerOneMillion: 0 }
             hightTextClass="red"
           />
-           {/* <InfoBox
+           <InfoBox
            activeClass="infoBox--selected-blue"
             active={casesType === "active"}
             onClick={(e) => setCasesType("active")}
@@ -37,7 +37,7 @@ function App() {
             hightTextClass="blue"
             casesPerOneMillion={countryInfo.activePerOneMillion ? countryInfo.activePerOneMillion: 0 }
 
-          /> */}
+          />
           <InfoBox
            activeClass="infoBox--selected-green"
             active={casesType === "recovered"}

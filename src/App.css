@@ -63,9 +63,9 @@ body {
   display: none !important;
 }
 
-.MuiCardContent-root:last-child {
+/* .MuiCardContent-root:last-child {
   padding-bottom: 7px !important;
-}
+} */
 
 .last-updated {
   margin-left: 10px;
@@ -79,4 +79,8 @@ body {
   .app {
     flex-direction: column;
   }
+  .app_left {
+    flex-direction: column;
+  }
+  
 }
