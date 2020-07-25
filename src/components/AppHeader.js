@@ -11,7 +11,6 @@ function AppHeader() {
     countries,
     country,
     setCountry,
-    countryInfo,
     setCountryInfo,
     setMapCenter,
     setMapZoom
@@ -38,10 +37,9 @@ function AppHeader() {
   };
   return (
     <div className="app_header">
-       <div style={{display:'flex', alignItems:'center'}}>
+       <div>
        <h1>COVID-19 TRACKER</h1>
-       <h5 className="last-updated ">last updated on {new Date(countryInfo.updated).toLocaleString()}</h5>
-       </div>
+        </div>
        <FormControl className="app_dropdown">
         <Select variant="outlined" value={country} onChange={onCountryChange}>
           <MenuItem value="worldwide">Worldwide</MenuItem>

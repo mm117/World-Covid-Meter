@@ -16,6 +16,7 @@ function App() {
     <div className="app">
       <div className="app_left">
         <AppHeader />
+   <     h5 className="app_last-updated">last updated on {new Date(countryInfo.updated).toLocaleString()}</h5>
         <div className="app_stats">
           <InfoBox
              activeClass="infoBox--selected-red"

@@ -48,3 +48,21 @@
 .blue {
     color:blue;
 }
+
+
+@media (max-width:990px) {
+    .app {
+      flex-direction: column;
+    }
+    .app_stats {
+      flex-direction: column !important;
+      flex-grow: 0.6 !important;
+
+    }
+    .infoBox{
+        margin: 5px 0px !important;
+        margin-right: 0px !important;
+    }
+    
+    
+  }
