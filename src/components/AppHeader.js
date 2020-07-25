@@ -40,7 +40,7 @@ function AppHeader() {
     <div className="app_header">
        <div style={{display:'flex', alignItems:'center'}}>
        <h1>COVID-19 TRACKER</h1>
-       <h7 className="last-updated ">last updated on {new Date(countryInfo.updated).toLocaleString()}</h7>
+       <h5 className="last-updated ">last updated on {new Date(countryInfo.updated).toLocaleString()}</h5>
        </div>
        <FormControl className="app_dropdown">
         <Select variant="outlined" value={country} onChange={onCountryChange}>

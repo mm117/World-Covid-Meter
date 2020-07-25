@@ -70,16 +70,30 @@ function LineGraph({...props}) {
   const buildChart = (data) => {
     const chartData = [];
     let lastDataPoint;
-    for (const date in data[casesType]) {
-      if (lastDataPoint) {
-        const newDataPoint = {
-          x: date,
-          y: data[casesType][date] - lastDataPoint,
-        };
-        chartData.push(newDataPoint);
+    if(casesType !=='active') {
+      for (const date in data[casesType]) {
+        if (lastDataPoint) {
+          const newDataPoint = {
+            x: date,
+            y: data[casesType][date] - lastDataPoint,
+          };
+          chartData.push(newDataPoint);
+        }
+        lastDataPoint = data[casesType][date];
       }
-      lastDataPoint = data[casesType][date];
+    } else{
+      for (const date in data['cases']) {
+        if (lastDataPoint) {
+          const newDataPoint = {
+            x: date,
+            y: (data['cases'][date] - ( data['recovered'][date] +  data['deaths'][date])) - lastDataPoint,
+          };
+          chartData.push(newDataPoint);
+        }
+        lastDataPoint = data['cases'][date] - ( data['recovered'][date] +  data['deaths'][date]);
+      }
     }
+   
     return chartData;
   };
 

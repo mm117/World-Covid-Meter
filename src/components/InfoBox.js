@@ -12,7 +12,7 @@ function InfoBox({title, cases, activeClass, active, total, ...props}) {
                 {title}
             </Typography>
             <h2 className={`infoBox_cases ${props.hightTextClass}`}>
-             + <CountUp start={0} end={cases}
+             {cases >= 0 ? '+':''} <CountUp start={0} end={cases}
                                 duration={3.5}
                                formattingFn={(value)=> prettyPrintStat(value)}
                             />

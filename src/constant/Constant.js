@@ -17,6 +17,12 @@ export const caseTypeColors = {
       primary:'#000000',
       rgba:"rgba(0, 0, 0,0.8)"
     },
+    active: {
+      hex: "#7faefa",
+      multiplier: 1000,
+      primary:'#0000FF',
+      rgba:"rgb(0,0,255,0.8)"
+    },
   };
 
 

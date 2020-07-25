@@ -12,9 +12,12 @@
 .infoBox--selected-red{
     border-top: 10px solid red;
    }
-   .infoBox--selected-black{
+.infoBox--selected-black{
     border-top: 10px solid black;
-   }
+}
+.infoBox--selected-blue{
+    border-top: 10px solid blue;
+}
 
 .infoBox_cases{
    color:#cc1034;
@@ -41,4 +44,7 @@
 }
 .black {
     color : black
+}
+.blue {
+    color:blue;
 }

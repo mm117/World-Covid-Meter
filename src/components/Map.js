@@ -6,6 +6,7 @@ import {Context} from '../store/context/AppContext';
 function Map() {
   const {mapCountries, mapCenter,
     mapZoom,casesType } = React.useContext(Context);
+     console.log(mapCountries);
      return (
     <div className="map">
       <LeafletMap center={mapCenter} zoom={mapZoom}>

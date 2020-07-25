@@ -27,6 +27,17 @@ function App() {
             casesPerOneMillion={countryInfo.casesPerOneMillion ? countryInfo.casesPerOneMillion: 0 }
             hightTextClass="red"
           />
+           <InfoBox
+           activeClass="infoBox--selected-blue"
+            active={casesType === "active"}
+            onClick={(e) => setCasesType("active")}
+            title="Active"
+            cases={countryInfo.todayCases ? (countryInfo.todayCases -(countryInfo.todayRecovered +  countryInfo.todayDeaths )): 0} 
+            total={countryInfo.active ? countryInfo.active: 0}
+            hightTextClass="blue"
+            casesPerOneMillion={countryInfo.activePerOneMillion ? countryInfo.activePerOneMillion: 0 }
+
+          />
           <InfoBox
            activeClass="infoBox--selected-green"
             active={casesType === "recovered"}
@@ -48,6 +59,7 @@ function App() {
             casesPerOneMillion={countryInfo.deathsPerOneMillion ? countryInfo.deathsPerOneMillion: 0 }
 
           />
+          
         </div>
         <Map />
       </div>
@@ -55,7 +67,7 @@ function App() {
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table />
-          <h3 className="app_graphTitle">{country === 'worldwide' ? 'WorldWide' : `${countryInfo.country}`} New {casesType}</h3>
+          <h3 className="app_graphTitle">{country === 'worldwide' ? 'WorldWide' : `${countryInfo.country}`} {casesType} Trends</h3>
           <LineGraph className="app_graph" />
         </CardContent>
       </Card>
