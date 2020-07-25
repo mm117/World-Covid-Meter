@@ -79,8 +79,9 @@ body {
   .app {
     flex-direction: column;
   }
-  .app_left {
-    flex-direction: column;
+  .app_stats {
+    flex-direction: column !important;
   }
+ 
   
 }
