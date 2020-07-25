@@ -8,7 +8,7 @@ export const sortData = (data) => {
 };
 
 export const prettyPrintStat = (stat) => {
-  return stat ? `+${numeral(stat).format("0.0a")}` : "+0";
+  return stat ? `${numeral(stat).format("0.0a")}` : "+0";
 };
 
 export const showDataOnMap = (data, caseType = "cases") =>

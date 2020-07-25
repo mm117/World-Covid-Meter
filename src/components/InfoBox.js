@@ -1,6 +1,8 @@
 import React from 'react';
 import {Card, CardContent, Typography} from '@material-ui/core';
 import './infoBox.css';
+import CountUp from 'react-countup';
+import { prettyPrintStat } from "../util";
 
 function InfoBox({title, cases, activeClass, active, total, ...props}) {
     return (
@@ -10,10 +12,20 @@ function InfoBox({title, cases, activeClass, active, total, ...props}) {
                 {title}
             </Typography>
             <h2 className={`infoBox_cases ${props.hightTextClass}`}>
-                {cases}
+             + <CountUp start={0} end={cases}
+                                duration={3.5}
+                               formattingFn={(value)=> prettyPrintStat(value)}
+                            />
             </h2>
             <Typography className="infoBox_total" color="textSecondary">
-                {total} Total
+            <CountUp start={0} end={total}
+                                duration={3.5}
+                                formattingFn={(value)=> prettyPrintStat(value)}/> Total
+            </Typography>
+            <Typography className="infoBox_total" color="textSecondary">
+            <CountUp start={0} end={props.casesPerOneMillion}
+                                duration={3.5}
+                                formattingFn={(value)=> prettyPrintStat(value)}/> Per Million
             </Typography>
         </CardContent> 
         </Card>

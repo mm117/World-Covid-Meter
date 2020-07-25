@@ -22,8 +22,9 @@ function App() {
             active={casesType === "cases"}
             onClick={(e) => setCasesType("cases")}
             title="Confirmed"
-            cases={prettyPrintStat(countryInfo.todayCases)}
-            total={prettyPrintStat(countryInfo.cases)}
+            cases={countryInfo.todayCases ? countryInfo.todayCases: 0 }
+            total={countryInfo.cases ? countryInfo.cases: 0 }
+            casesPerOneMillion={countryInfo.casesPerOneMillion ? countryInfo.casesPerOneMillion: 0 }
             hightTextClass="red"
           />
           <InfoBox
@@ -31,18 +32,20 @@ function App() {
             active={casesType === "recovered"}
             onClick={(e) => setCasesType("recovered")}
             title="Recovered"
-            cases={prettyPrintStat(countryInfo.todayRecovered)}
-            total={prettyPrintStat(countryInfo.recovered)}
+            cases={countryInfo.todayRecovered ? countryInfo.todayRecovered: 0}
+            total={countryInfo.recovered ? countryInfo.recovered: 0}
             hightTextClass="green"
+            casesPerOneMillion={countryInfo.recoveredPerOneMillion ? countryInfo.recoveredPerOneMillion: 0 }
           />
           <InfoBox
            activeClass="infoBox--selected-black"
             active={casesType === "deaths"}
             onClick={(e) => setCasesType("deaths")}
             title="Deaths"
-            cases={prettyPrintStat(countryInfo.todayDeaths)}
-            total={prettyPrintStat(countryInfo.deaths)}
+            cases={countryInfo.todayDeaths ? countryInfo.todayDeaths: 0} 
+            total={countryInfo.deaths ? countryInfo.deaths: 0}
             hightTextClass="black"
+            casesPerOneMillion={countryInfo.deathsPerOneMillion ? countryInfo.deathsPerOneMillion: 0 }
 
           />
         </div>
