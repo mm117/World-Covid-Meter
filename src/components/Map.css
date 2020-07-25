@@ -32,7 +32,7 @@
 
 .info-confirmed,
 .info-recovered,
-.info-deaths{
+.info-deaths, .info-active {
     font-size: 16px;
     margin-top:5px;
 }
