@@ -12,7 +12,7 @@ export const prettyPrintStat = (stat) => {
 };
 
 export const showDataOnMap = (data, caseType = "cases") =>
-  data.map((country, index) => (
+   data.map((country, index) => (
     <Circle
       key={index}
       center={[country.countryInfo.lat, country.countryInfo.long]}
@@ -20,7 +20,7 @@ export const showDataOnMap = (data, caseType = "cases") =>
       color={caseTypeColors[caseType].hex}
       fillColor={caseTypeColors[caseType].hex}
       radius={
-        Math.sqrt(country[caseType]) * caseTypeColors[caseType].multiplier
+        Math.sqrt(country[caseType] < 0  ? 0 : country[caseType] ) * (caseTypeColors[caseType] < 0 ? 0 : caseTypeColors[caseType].multiplier )
       }
     >
      <Popup>
@@ -46,3 +46,5 @@ export const showDataOnMap = (data, caseType = "cases") =>
       </Popup>
     </Circle>
   ));
+
+   
