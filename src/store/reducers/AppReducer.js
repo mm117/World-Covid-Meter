@@ -19,6 +19,8 @@ const reducers = (state, action) => {
       return { ...state, mapZoom: action.value };
     case actions.SET_CASESTYPE:
       return { ...state, casesType: action.value };
+      case actions.SET_CHARTDATA:
+        return { ...state, chartData: action.value };
     default:
       return state;
   }

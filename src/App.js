@@ -9,56 +9,57 @@ import LineGraph from "./components/LineGraph";
 import "leaflet/dist/leaflet.css";
 import { Context } from "./store/context/AppContext";
 import AppHeader from "./components/AppHeader";
+import actions from './store/actions/Action'
 
 function App() {
-  const { casesType, countryInfo, setCasesType, country} = React.useContext(Context);
+  const { state, dispatch} = React.useContext(Context);
    return (
      <>
     <div className="app">
       <div className="app_left">
         <AppHeader />
-   <     h5 className="app_last-updated">last updated on {new Date(countryInfo.updated).toLocaleString()}</h5>
+        <h5 className="app_last-updated">last updated on {new Date(state.countryInfo.updated).toLocaleString()}</h5>
         <div className="app_stats">
           <InfoBox
              activeClass="infoBox--selected-red"
-            active={casesType === "cases"}
-            onClick={(e) => setCasesType("cases")}
+            active={state.casesType === "cases"}
+            onClick={(e) =>  dispatch({type:actions.SET_CASESTYPE, value:"cases"})}
             title="Confirmed"
-            cases={countryInfo.todayCases ? countryInfo.todayCases: 0 }
-            total={countryInfo.cases ? countryInfo.cases: 0 }
-            casesPerOneMillion={countryInfo.casesPerOneMillion ? countryInfo.casesPerOneMillion: 0 }
+            cases={state.countryInfo.todayCases ? state.countryInfo.todayCases: 0 }
+            total={state.countryInfo.cases ? state.countryInfo.cases: 0 }
+            casesPerOneMillion={state.countryInfo.casesPerOneMillion ? state.countryInfo.casesPerOneMillion: 0 }
             hightTextClass="red"
           />
            <InfoBox
            activeClass="infoBox--selected-blue"
-            active={casesType === "active"}
-            onClick={(e) => setCasesType("active")}
+            active={state.casesType === "active"}
+            onClick={(e) => dispatch({type:actions.SET_CASESTYPE, value:"active"})}
             title="Active"
-            cases={countryInfo.todayCases ? (countryInfo.todayCases -(countryInfo.todayRecovered +  countryInfo.todayDeaths )): 0} 
-            total={countryInfo.active ? countryInfo.active: 0}
+            cases={state.countryInfo.todayCases ? (state.countryInfo.todayCases -(state.countryInfo.todayRecovered +  state.countryInfo.todayDeaths )): 0} 
+            total={state.countryInfo.active ? state.countryInfo.active: 0}
             hightTextClass="blue"
-            casesPerOneMillion={countryInfo.activePerOneMillion ? countryInfo.activePerOneMillion: 0 }
+            casesPerOneMillion={state.countryInfo.activePerOneMillion ? state.countryInfo.activePerOneMillion: 0 }
 
           />
           <InfoBox
            activeClass="infoBox--selected-green"
-            active={casesType === "recovered"}
-            onClick={(e) => setCasesType("recovered")}
+            active={state.casesType === "recovered"}
+            onClick={(e) => dispatch({type:actions.SET_CASESTYPE, value:"recovered"})}
             title="Recovered"
-            cases={countryInfo.todayRecovered ? countryInfo.todayRecovered: 0}
-            total={countryInfo.recovered ? countryInfo.recovered: 0}
+            cases={state.countryInfo.todayRecovered ? state.countryInfo.todayRecovered: 0}
+            total={state.countryInfo.recovered ? state.countryInfo.recovered: 0}
             hightTextClass="green"
-            casesPerOneMillion={countryInfo.recoveredPerOneMillion ? countryInfo.recoveredPerOneMillion: 0 }
+            casesPerOneMillion={state.countryInfo.recoveredPerOneMillion ? state.countryInfo.recoveredPerOneMillion: 0 }
           />
           <InfoBox
            activeClass="infoBox--selected-black"
-            active={casesType === "deaths"}
-            onClick={(e) => setCasesType("deaths")}
+            active={state.casesType === "deaths"}
+            onClick={(e) => dispatch({type:actions.SET_CASESTYPE, value:"deaths"})}
             title="Deaths"
-            cases={countryInfo.todayDeaths ? countryInfo.todayDeaths: 0} 
-            total={countryInfo.deaths ? countryInfo.deaths: 0}
+            cases={state.countryInfo.todayDeaths ? state.countryInfo.todayDeaths: 0} 
+            total={state.countryInfo.deaths ? state.countryInfo.deaths: 0}
             hightTextClass="black"
-            casesPerOneMillion={countryInfo.deathsPerOneMillion ? countryInfo.deathsPerOneMillion: 0 }
+            casesPerOneMillion={state.countryInfo.deathsPerOneMillion ? state.countryInfo.deathsPerOneMillion: 0 }
 
           />
           
@@ -69,7 +70,7 @@ function App() {
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table />
-          <h3 className="app_graphTitle">{country === 'worldwide' ? 'WorldWide' : `${countryInfo.country}`} {casesType} Trends</h3>
+          <h3 className="app_graphTitle">{state.country === 'worldwide' ? 'WorldWide' : `${state.countryInfo.country}`} {state.casesType} Trends</h3>
           <LineGraph className="app_graph" />
         </CardContent>
       </Card>

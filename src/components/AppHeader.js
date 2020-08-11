@@ -5,15 +5,12 @@ import {
   MenuItem
 } from "@material-ui/core";
 import { Context } from "../store/context/AppContext";
+import actions from "../store/actions/Action"
 
 function AppHeader() {
-  const {
-    countries,
-    country,
-    setCountry,
-    setCountryInfo,
-    setMapCenter,
-    setMapZoom
+   const {
+    state,
+    dispatch
    } = React.useContext(Context);
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
@@ -24,16 +21,14 @@ function AppHeader() {
     await fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setCountry(countryCode);
-        setCountryInfo(data);
-        countryCode === "worldwide"
-          ? setMapCenter({ lat: 34.80746, lng: -40.4796 })
-          : setMapCenter({
-              lat: data.countryInfo.lat,
-              lng: data.countryInfo.long,
-            });
-        setMapZoom(3);
-      });
+        dispatch({type:actions.SET_COUNTRY, value:countryCode});
+        dispatch({type:actions.SET_COUNTRYINFO, value:data});
+         countryCode === "worldwide"
+          ? dispatch({type:actions.SET_MAPCENTER, value:{ lat: 34.80746, lng: -40.4796 }})
+          : dispatch({type:actions.SET_MAPCENTER, value:{ lat: data.countryInfo.lat,
+            lng: data.countryInfo.long}});
+          dispatch({type:actions.SET_MAPZOOM, value:3});
+        });
   };
   return (
     <div className="app_header">
@@ -41,9 +36,9 @@ function AppHeader() {
        <h1>COVID-19 TRACKER</h1>
         </div>
        <FormControl className="app_dropdown">
-        <Select variant="outlined" value={country} onChange={onCountryChange}>
+        <Select variant="outlined" value={state.country} onChange={onCountryChange}>
           <MenuItem value="worldwide">Worldwide</MenuItem>
-          {countries.map((country, index) => (
+          {state.countries.map((country, index) => (
             <MenuItem key={index} value={country.value}>
               {country.name}
             </MenuItem>

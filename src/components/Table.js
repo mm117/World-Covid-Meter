@@ -4,10 +4,10 @@ import numeral from 'numeral';
 import {Context} from '../store/context/AppContext';
 
 function Table() {
-   const {tableData} = React.useContext(Context);
+   const {state} = React.useContext(Context);
   return (
     <div className="table">
-      {tableData.map(({country, cases},index) => (
+      {state.tableData.map(({country, cases},index) => (
         <tr key={index}>
           <td> {country}</td>
          <td> 
