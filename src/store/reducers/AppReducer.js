@@ -1,27 +1,49 @@
 import actions from "../actions/Action";
 
 const reducers = (state, action) => {
+  let newState = {};
+  if (!navigator.onLine) {
+    state = JSON.parse(localStorage.getItem("state"));
+  }
   switch (action.type) {
     case actions.SET_COUNTRIES:
-      console.table(state);
-      return { ...state, countries: action.value };
+      newState = { ...state, countries: action.value };
+      localStorage.setItem("state", JSON.stringify(newState));
+      return newState;
     case actions.SET_COUNTRY:
-      return { ...state, country: action.value };
+      newState = { ...state, country: action.value };
+      localStorage.setItem("state", JSON.stringify(newState));
+      return newState;
     case actions.SET_COUNTRYINFO:
-      return { ...state, countryInfo: action.value };
+      newState = { ...state, countryInfo: action.value };
+      localStorage.setItem("state", JSON.stringify(newState));
+      return newState;
     case actions.SET_TABLEDATA:
-      return { ...state, tableData: action.value };
+      newState = { ...state, tableData: action.value };
+      localStorage.setItem("state", JSON.stringify(newState));
+      return newState;
     case actions.SET_MAPCOUNTRIES:
-      return { ...state, mapCountries: action.value };
+      newState = { ...state, mapCountries: action.value };
+      localStorage.setItem("state", JSON.stringify(newState));
+      return newState;
     case actions.SET_MAPCENTER:
-      return { ...state, mapCenter: action.value };
+      newState = { ...state, mapCenter: action.value };
+      localStorage.setItem("state", JSON.stringify(newState));
+      return newState;
     case actions.SET_MAPZOOM:
-      return { ...state, mapZoom: action.value };
+      newState = { ...state, mapZoom: action.value };
+      localStorage.setItem("state", JSON.stringify(newState));
+      return newState;
     case actions.SET_CASESTYPE:
-      return { ...state, casesType: action.value };
-      case actions.SET_CHARTDATA:
-        return { ...state, chartData: action.value };
+      newState = { ...state, casesType: action.value };
+      localStorage.setItem("state", JSON.stringify(newState));
+      return newState;
+    case actions.SET_CHARTDATA:
+      newState = { ...state, chartData: action.value };
+      localStorage.setItem("state", JSON.stringify(newState));
+      return newState;
     default:
+      localStorage.setItem("state", JSON.stringify(state));
       return state;
   }
 };
